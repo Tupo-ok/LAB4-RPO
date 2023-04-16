@@ -1,10 +1,12 @@
 package com.example.backend.models;
 
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 
@@ -32,15 +34,18 @@ public class users {
 
     @Column(name = "email", nullable = false, unique = true)
     public String email;
-
+    
+    @JsonIgnore
     @Column(name = "salt")
     public String salt;
 
+    @JsonIgnore
     @Column(name = "token")
     public String token;
 
+    @JsonIgnore
     @Column(name = "activity")
-    public String activity;
+    public LocalDateTime activity;
 
     @ManyToMany(mappedBy = "users")
     public Set<museums> museums = new HashSet<>();
@@ -52,15 +57,19 @@ public class users {
     public String getEmail(){
         return this.email;
     }
+    
+    public String getPassword(){
+        return this.password;
+    }
 
     public void addMuseum(museums m) {
         this.museums.add(m);
         m.users.add(this);
     }
-
+    
     public void removeMuseum(museums m) {
         this.museums.remove(m);
         m.users.remove(this);
     }
-
+    
 }

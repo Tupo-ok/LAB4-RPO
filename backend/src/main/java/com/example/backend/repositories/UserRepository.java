@@ -16,4 +16,10 @@ public interface UserRepository extends CrudRepository<users, Long> {
 
     @Query("SELECT u FROM users u WHERE u.id = :id")
     public Optional<users> findById(@Param("id") Long id);
+	
+	@Query("SELECT u FROM users u WHERE u.token = :userToken")
+    public Optional<users> findByToken(@Param("userToken") String userToken);
+
+    @Query("SELECT u FROM users u WHERE u.login = :login")
+    public Optional<users> findByLogin(@Param("login") String login); 
 }
