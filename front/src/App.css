@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+
+.Navbar {
+  color: white;
+}
+
+.wrapper {
+  display: flex;
+  align-items: stretch;
+}
+
+.my-sidebar {
+  min-height: 100vh;
+  background-color: #282c34;
+  color: #000000;
+}
+
+.my-sidebar-expanded {
+  font-size: 1.25em;
+  min-width: 140px;
+  max-width: 140px;
+}
+
+.my-sidebar-collapsed {
+  min-width: 62px;
+  max-width: 62px;
+}
